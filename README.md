@@ -18,6 +18,8 @@ This repository consists of the following files:
 
 * .dockerignore   :   A file telling Docker to ignore local installations of server dependencies. Npm install downloads all needed dependencies when run through Docker on a new device
 
+* script.ps1   :   A Powershell script file containing the script necessary to build the Docker image and run it as a container
+
 
 
 ## How to run the program
@@ -28,18 +30,17 @@ Ensure Docker is installed on your device. If not, download it here: https://www
 
 2) Open program in IDE of your choice
 
-3) Run the following script within your CLI to build the Docker image:
-    * docker build -t minitab-take-home-test .
+3) Open the terminal within your IDE
 
-4) Run the following script within your CLI to start up the server through a docker container run on Port 2500:
-    * docker run -p 2500:2500 minitab-take-home-test
+4) Run the following command within your terminal to run the script which builds the Docker image and runs it as a container (effectively starting the server)
+    * .\script.ps1
 
-5) Open a second terminal in your CLI
+5) Open a second terminal
 
-6) Use the following Powershell script within your CLI to test out the exposed POST /mean endpoint of the server (modify the numbers within the array to test functionality):
+6) Use the following Powershell script within your terminal to test out the exposed POST /mean endpoint of the server (modify the numbers within the array to test functionality):
     * Invoke-RestMethod -Uri http://localhost:2500/mean -Method Post -ContentType "application/json" -Body (ConvertTo-Json @(1, 2, 3, 4, 5))
 
-7) Use the following Powershell script within your CLI to test out the exposed POST /stddev endpoint of the server (modify the numbers within the array to test functionality):
+7) Use the following Powershell script within your terminal to test out the exposed POST /stddev endpoint of the server (modify the numbers within the array to test functionality):
     * Invoke-RestMethod -Uri http://localhost:2500/stddev -Method Post -ContentType "application/json" -Body (ConvertTo-Json @(1, 2, 3, 4, 5))
 
 
@@ -63,18 +64,18 @@ This program is intended to be run through Docker, however it is able to be run 
 
 2) Open program in IDE of your choice
 
-3) Run the following command within your CLI to install all neccessary dependencies:
+3) Run the following command within your terminal to install all neccessary dependencies:
     * npm install
 
-4) Run the following command within your CLI to start up the server:
+4) Run the following command within your terminal to start up the server:
     * node server.js
 
-5) Open a second terminal in your CLI
+5) Open a second terminal in your terminal
 
-6) Use the following Powershell script within your CLI to test out the exposed POST /mean endpoint of the server (modify the numbers within the array to test functionality):
+6) Use the following Powershell script within your terminal to test out the exposed POST /mean endpoint of the server (modify the numbers within the array to test functionality):
     * Invoke-RestMethod -Uri http://localhost:2500/mean -Method Post -ContentType "application/json" -Body (ConvertTo-Json @(1, 2, 3, 4, 5))
 
-7) Use the following Powershell script within your CLI to test out the exposed POST /stddev endpoint of the server (modify the numbers within the array to test functionality):
+7) Use the following Powershell script within your terminal to test out the exposed POST /stddev endpoint of the server (modify the numbers within the array to test functionality):
     * Invoke-RestMethod -Uri http://localhost:2500/stddev -Method Post -ContentType "application/json" -Body (ConvertTo-Json @(1, 2, 3, 4, 5))
 
 
@@ -98,3 +99,15 @@ FUNCTIONAL REQUIREMENTS
 CONTAINERIZATION
 * Provide a Dockerfile that builds the service into a container image. Also provide one shell script, written in Bash or PowerShell,
 that builds the image and runs it as a container.
+
+
+
+## Troubleshooting
+
+If the .\script.ps1 command does not work, instead run the following two commands, one after the other
+
+To build the Docker image:
+* docker build -t minitab-take-home-test .
+
+To run the image as a container on port 2500:
+* docker run -p 2500:2500 minitab-take-home-test     
