@@ -28,10 +28,10 @@ Ensure Docker is installed on your device. If not, download it here: https://www
 
 2) Open program in IDE of your choice
 
-3) Run the following Powershell script within your CLI to build the Docker image:
+3) Run the following script within your CLI to build the Docker image:
     * docker build -t minitab-take-home-test .
 
-4) Run the following Powershell script within your CLI to start up the server through a docker container run on Port 2500:
+4) Run the following script within your CLI to start up the server through a docker container run on Port 2500:
     * docker run -p 2500:2500 minitab-take-home-test
 
 5) Open a second terminal in your CLI
