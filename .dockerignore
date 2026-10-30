@@ -1,0 +1,2 @@
+# Telling Docker to ignore the node_modules folder when building the image
+node_modules

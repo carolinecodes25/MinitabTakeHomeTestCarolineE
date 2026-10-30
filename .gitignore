@@ -1,0 +1,2 @@
+# Telling git to ignore the node_modules folder when pushing to the repository
+node_modules
