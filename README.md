@@ -2,7 +2,7 @@
 
 Code by: Caroline Eckenrode
 
-This repository should consist of the following files:
+This repository consists of the following files:
 
 * server.js   :   The main server file written in node.js with Express. It is intended to be run through Docker with the Powershell scripts provided later in this document
 
@@ -46,7 +46,7 @@ Ensure Docker is installed on your device. If not, download it here: https://www
 
 ## Further file descriptions
 
-* server.js contains a basic HTTP web service constructed using node.js and javascript as the language. To simplify the code and streamline json parsing, the node.js framework Express is used. Documentation for each line of code and it's purpose are provided within the server.js file. Two POST endpoints are exposed: /mean and /stddev, each which take an input array of numbers and call their respective functions to calculate what value to return. Functions for calculating the mean and population standard deviation are written out. Calulating the mean is a part of calculating the standard deviation, thus it was more efficient and scalable to make these caluclations into functions instead of writing them directly within the POST endpoint. The server defines PORT 2500 as the one to listen on and runs on http://localhost:2500/ (insert endpoint here). There is no interface for this server, so searching  http://localhost:2500 in your browser will result in an error.
+* server.js contains a basic HTTP web service constructed using javascript as the language and node.js as a JavaScript runtime environment that allows developers to execute JavaScript code on a server. To simplify the code and streamline json parsing, the node.js framework Express is used. Documentation for each line of code and it's purpose are provided within the server.js file. Two POST endpoints are exposed: /mean and /stddev, each which take an input array of numbers and call their respective functions to calculate what value to return. Functions for calculating the mean and population standard deviation are written out. Calulating the mean is a part of calculating the standard deviation, thus it was more efficient and scalable to make these caluclations into functions instead of writing them directly within the POST endpoint. The server defines PORT 2500 as the one to listen on and runs on http://localhost:2500/ (insert endpoint here). There is no interface for this server, so searching  http://localhost:2500 in your browser will result in an error.
 
 * Dockerfile builds an image in Docker for the node.js server. It begins by utilizing the node:22 version of Docker's Official Image for node and then sets the working directory to /app inside the container it created. The COPY command copies package-lock.json and package.json into the container which tells the next command: RUN npm install which dependencies to install. The periods after the second COPY command represent all other files in the program except any defined in .dockerignore. Then it sets the PORT environment variable to 2500 at runtime and exposes it for use. Finally the conatiner manager runs npm start which runs node server.js to start the server.
 
