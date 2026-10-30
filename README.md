@@ -79,10 +79,7 @@ This program is intended to be run through Docker, however it is able to be run 
 
 
 
-Upon building the Docker image or running npm install for the first time on any device, a node_modules folder should be automatically generated
-This folder contains all the dependencies needed to run the server inlcuding Express for node.js
-
-The .dockerignore and .gitignore exist to tell Docker and git to ignore this folder when building an image or pushing to git from the local device
+The .dockerignore and .gitignore exist to tell Docker and git to ignore the local node_modules folder when building an image or pushing to git from the local device
 The sheer size and amount of dependencies within node_modules is impractical, cumbersome, and repetitive to include in the Docker image or git repository
 Since Docker runs npm install autmoatically when building the image, and the package-lock.json and package.json files are present to tell npm what dependencies are needed, the program handles the automatic download of all neccessary dependencies when run in a much faster manner than manually downloading them from the repository
  
